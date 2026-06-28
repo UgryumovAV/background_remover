@@ -11,7 +11,7 @@ app = FastAPI(title="Background Removal Service", version="1.0.0")
 session = new_session("bria-rmbg")
 
 
-@app.post("/remove-bg")
+@app.post("/remove-bg", response_model=None)
 async def remove_background(
     file: UploadFile = File(..., description="Изображение (JPG/PNG/WebP)"),
     white_bg: bool = Query(False, description="Вернуть JPEG с белым фоном вместо прозрачного PNG"),
